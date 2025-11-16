@@ -26,6 +26,15 @@ python3 crawler.py --url <URL> --extract --html-file page.html --output article.
 docker stop selenium-chrome
 ```
 
+### Windows (Docker Desktop)
+
+1) Install Python (on PATH), Docker Desktop, and `pip install -r requirements.txt`.
+2) Run:
+```bat
+run.bat [URL]
+```
+Environment overrides: set `HTML_FILE`, `OUTPUT_JSON`, `WAIT_SECONDS` before calling. The `URL` argument is optional; it defaults to the requested VnExpress article.
+
 - The script connects to Selenium at `http://localhost:4444/wd/hub` (override with `SELENIUM_ENDPOINT`).
 - `crawler.py --download` saves full HTML (scrolls, clicks “Xem thêm” buttons to load more comments) to a file; `--extract` parses that file for article fields and comments.
 - Selectors are tailored to current VnExpress markup (`title-detail`, `fck_detail`, comment blocks under `#list_comment`). Adjust in `crawler.py` if the site changes.
