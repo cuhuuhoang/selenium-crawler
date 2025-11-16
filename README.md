@@ -38,3 +38,4 @@ Environment overrides: set `HTML_FILE`, `OUTPUT_JSON`, `WAIT_SECONDS` before cal
 - The script connects to Selenium at `http://localhost:4444/wd/hub` (override with `SELENIUM_ENDPOINT`).
 - `crawler.py --download` saves full HTML (scrolls, clicks “Xem thêm” buttons to load more comments) to a file; `--extract` parses that file for article fields and comments.
 - Selectors are tailored to current VnExpress markup (`title-detail`, `fck_detail`, comment blocks under `#list_comment`). Adjust in `crawler.py` if the site changes.
+- Concurrency: each Python script/process should create its own `WebDriver`. The provided standalone Chrome container allows one session at a time (requests queue). For true parallelism, run multiple containers or a Selenium Grid with more nodes/sessions.
